@@ -10,6 +10,7 @@ export default function Student() {
     const [variant, setVariant] = React.useState('outlined');
     const [countdown, setCountdown] = React.useState(0);
     const [Students, setStudents] = React.useState([]);
+  
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,7 +18,7 @@ export default function Student() {
         console.log(student);
         setVariant('contained');
 
-        fetch("http://localhost:8080/student", {
+        fetch("https://todo-backend-8y3n.onrender.com/student", {
             method: "POST",
             headers: { "content-Type": "application/json" },
             body: JSON.stringify(student)
@@ -39,7 +40,7 @@ export default function Student() {
     };
 
     const fetchStudents = () => {
-        fetch("http://localhost:8080/student/Getall")
+        fetch("https://todo-backend-8y3n.onrender.com/student/Getall")
             .then(res => res.json())
             .then((result) => {
                 setStudents(result);
@@ -47,7 +48,7 @@ export default function Student() {
     };
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:8080/student/${id}`, {
+        fetch(`https://todo-backend-8y3n.onrender.com/student/${id}`, {
             method: "DELETE",
             headers: { "content-Type": "application/json" }
         }).then(() => {
